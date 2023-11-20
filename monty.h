@@ -48,7 +48,10 @@ void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 500694c... add: pop function
+=======
+>>>>>>> ad3b50b5edefc14794b49c38db1df20d72f7ec17
 
 #endif
