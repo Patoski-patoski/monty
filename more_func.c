@@ -24,3 +24,18 @@ void add(stack_t **stack, unsigned int line_number)
 	free(temp);
 }
 
+/**
+ * nop- a function that does nothing
+ * @stack: a struct(stack)
+ * @line_number: line number incase of error
+ *
+ * Return: Nothing
+ **/
+
+void nop(stack_t **stack, unsigned int line_number)
+{
+	void(stack);
+	void(line_number);
+   /* Do nothing */
+}
+
