@@ -43,5 +43,6 @@ void pall(stack_t **stack, unsigned int value);
 char *parse_line(char *line);
 void exec_instruct(char *opcode, int value, int line_num, stack_t **stack);
 FILE *openFile(char *filename);
+void pint(stack_t **stack, unsigned int line_number);
 
 #endif

@@ -46,3 +46,24 @@ void pall(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 		current = current->next;
 	}
 }
+
+
+
+/**
+ * pint- a function to print first element in a stack
+ * @stack: a struct(stack)
+ * @line_number: in case of error! the line number
+ *
+ * Return: Nothing
+ **/
+
+void pint(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	fprintf(stdout, "%d\n", (*stack)->n);
+}
+

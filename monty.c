@@ -88,6 +88,7 @@ void exec_instruct(char *opcode, int value, int line_num, stack_t **stack)
 	instruction_t instruct[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL},
 	};
 
