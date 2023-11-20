@@ -23,17 +23,3 @@ void add(stack_t **stack, unsigned int line_number)
 	*stack = (*stack)->next;
 	free(temp);
 }
-
-/**
- * nop- a function that does nothing
- * @stack: a struct(stack)
- * @line_number: line number incase of error
- *
- * Return: Nothing
- **/
-/*
-void nop(__attribute__((unnused)) stack_t **stack, __attribute__((unused)) unsigned int line_number)
-{
-	stack_t *current = *stack;
-}
-*/ 
