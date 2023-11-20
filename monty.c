@@ -90,6 +90,7 @@ void exec_instruct(char *opcode, int value, int line_num, stack_t **stack)
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
+		{"swap", swap},
 		{NULL, NULL},
 	};
 

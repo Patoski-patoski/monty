@@ -45,5 +45,7 @@ void exec_instruct(char *opcode, int value, int line_num, stack_t **stack);
 FILE *openFile(char *filename);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+
 
 #endif
