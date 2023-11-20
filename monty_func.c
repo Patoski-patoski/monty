@@ -1,8 +1,17 @@
 #include "monty.h"
 
+/**
+ * push- a function to push element into a stack
+ * @stack: a struct(stack)
+ * @value: the element to be pushed
+ *
+ * Return: Nothing
+ **/
+
 void push(stack_t **stack, unsigned int value)
 {
 	stack_t *new_node = malloc(sizeof(stack_t));
+
 	if (new_node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
@@ -19,12 +28,17 @@ void push(stack_t **stack, unsigned int value)
 	*stack = new_node;
 }
 
-void pall(stack_t **stack, __attribute__((unused)) unsigned int  line_number)
+/**
+ * pall- a function to push element into a stack
+ * @stack: a struct(stack)
+ * @line_number: unused
+ *
+ * Return: Nothing
+ **/
+
+void pall(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
-	stack_t *current = NULL;
-	current = *stack;
-	if (current == NULL)
-		return;
+	stack_t *current = *stack;
 
 	while (current != NULL)
 	{
@@ -32,4 +46,3 @@ void pall(stack_t **stack, __attribute__((unused)) unsigned int  line_number)
 		current = current->next;
 	}
 }
-

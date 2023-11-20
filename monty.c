@@ -1,75 +1,91 @@
 #define _GNU_SOURCE
 #include "monty.h"
 
-stack_t *stack = NULL;
+/**
+ * main - the entry point of the program
+ * @argc: argument count
+ * @argv: argument vector
+ *
+ * Return: 0
+ **/
 
 int main(int argc, char *argv[])
 {
 	FILE *fptr;
 	int line_num = 1;
 	size_t len = 0;
-	char *lineptr = NULL;
+	char *line, *lineptr = NULL;
 	ssize_t read;
-	char *line;
-	/*	stack_t *stack = NULL; */
+	stack_t *stack = NULL;
 
 	if (argc != 2)
 	{
 		fprintf(stderr, "Usage: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-
-	openFile(argv[1]);
-
+	fptr = openFile(argv[1]);
 	while ((read = getline(&lineptr, &len, fptr)) != -1)
 	{
+		char *opcode, *num;
+		int value = 0;
+
 		line = parse_line(lineptr);
+
 		if (line == NULL || line[0] == '#')
 		{
 			line_num++;
 			continue;
 		}
-
-		char *delim = " ";
-		char *opcode = line;
+		opcode = line;
 		if (opcode == NULL)
 		{
 			fprintf(stderr, "Error opcode!\n");
 			exit(EXIT_FAILURE);
 		}
-
-		char *num = strtok(NULL, delim);
-		int value = 0;
-
+		num = strtok(NULL, " ");
 		if (num != NULL)
 			value = atoi(num);
-
-		executeInstruction(opcode, value, line_num);
-
+		exec_instruct(opcode, value, line_num, &stack);
 		line_num++;
 	}
-
 	fclose(fptr);
 	free(lineptr);
-
 	return (0);
 }
 
-void openFile(char *filename)
-{
+/**
+ * openfile- a function to open a file
+ * @filename: the filename
+ *
+ * Return: Pointer to the file
+ **/
 
+FILE *openFile(char *filename)
+{
 	FILE *fptr = fopen(filename, "r");
-	if (fptr == NULL) {
+
+	if (fptr == NULL)
+	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
-	/*file = fptr;*/
+	return (fptr);
 }
 
-void executeInstruction(char *opcode, int value, int line_num)
+/**
+ * exec_instruct- a function to execute instruction
+ *
+ * @opcode: the opcode:
+ * @line_num: the line number
+ * @value: the value of the instruction
+ * @stack: a pointer to a stack (struct)
+ *
+ * Return: 0
+ **/
+
+void exec_instruct(char *opcode, int value, int line_num, stack_t **stack)
 {
-	instruction_t instruct[] =
-	{
+	instruction_t instruct[] = {
 		{"push", push},
 		{"pall", pall},
 		{NULL, NULL},
@@ -78,27 +94,30 @@ void executeInstruction(char *opcode, int value, int line_num)
 	int len = sizeof(instruct) / sizeof(instruct[0]);
 	int j, found = 0;
 
-	for (j = 0; j < len; j++) {
-		if (strcmp(opcode, instruct[j].opcode) == 0) {
-			instruct[j].f(&stack, value);
+	for (j = 0; j < len; j++)
+	{
+		if (strcmp(opcode, instruct[j].opcode) == 0)
+		{
+			instruct[j].f(stack, value);
 			found = 1;
 			break;
 		}
 	}
 
-	if (!found) {
-		fprintf(stderr,"L%d: unknown instruction %s\n", line_num, opcode);
+	if (!found)
+	{
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);
 		exit(EXIT_FAILURE);
 	}
 }
 
-
 /**
- * parse_line - parses a line for an opcode and arguments
+ * parse_line- a function to parse the line
  * @line: the line to be parsed
  *
- * Return: returns the opcode or null on failure
- */
+ * Return: a poiner to characters
+ **/
+
 char *parse_line(char *line)
 {
 	char *op_code;
