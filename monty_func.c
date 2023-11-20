@@ -67,8 +67,6 @@ void pint(stack_t **stack, unsigned int line_number)
 	fprintf(stdout, "%d\n", (*stack)->n);
 }
 
-<<<<<<< HEAD
-
 /**
  * pop- a function to remove the top element of the stack.
  * @stack: a struct(stack)
@@ -114,9 +112,3 @@ void swap(stack_t **stack, unsigned int line_number)
 	(*stack)->n = (*stack)->next->n;
 	(*stack)->next->n = temp;
 }
-
-<<<<<<< HEAD
-=======
->>>>>>> parent of 500694c... add: pop function
-=======
->>>>>>> ad3b50b5edefc14794b49c38db1df20d72f7ec17

@@ -44,14 +44,8 @@ char *parse_line(char *line);
 void exec_instruct(char *opcode, int value, int line_num, stack_t **stack);
 FILE *openFile(char *filename);
 void pint(stack_t **stack, unsigned int line_number);
-<<<<<<< HEAD
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
-<<<<<<< HEAD
-=======
->>>>>>> parent of 500694c... add: pop function
-=======
->>>>>>> ad3b50b5edefc14794b49c38db1df20d72f7ec17
 
 #endif

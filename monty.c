@@ -89,16 +89,10 @@ void exec_instruct(char *opcode, int value, int line_num, stack_t **stack)
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
-<<<<<<< HEAD
 		{"pop", pop},
 		{"swap", swap},
 		{"add", add},
 		{"nop", nop},
-<<<<<<< HEAD
-=======
->>>>>>> parent of 500694c... add: pop function
-=======
->>>>>>> ad3b50b5edefc14794b49c38db1df20d72f7ec17
 		{NULL, NULL},
 	};
 
