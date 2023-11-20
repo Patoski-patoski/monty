@@ -92,7 +92,6 @@ void exec_instruct(char *opcode, int value, int line_num, stack_t **stack)
 		{"pop", pop},
 		{"swap", swap},
 		{"add", add},
-		{"nop", nop},
 		{NULL, NULL},
 	};
 
